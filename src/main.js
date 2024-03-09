@@ -8,7 +8,6 @@ import VueSweetalert2 from 'vue-sweetalert2'
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons';
 
 axios.defaults.baseURL = 'http://162.0.238.123/api/v1/'
 
