@@ -2,9 +2,7 @@
   <div>
     <nav class="navbar navbar-expand-lg bg-light" style="border-bottom: solid lightgrey 1px; width: 100%">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/"><img style="height:60px"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5i9N_LRrYe005Hlnq7216cntna8NmsISSJg&usqp=CAU"
-            alt=""></a>
+        
         <a class="navbar-brand" href="/"><button class="btn btn-dark">ترین</button></a>
         <div style="width: 100%" class="mnot">
         </div>

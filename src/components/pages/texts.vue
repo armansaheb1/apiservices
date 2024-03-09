@@ -5,7 +5,8 @@
                 اضافه کردن متن
             </div>
             <div class="card-body">
-                <label></label>
+                <label style="text-align:right; width: 100%; padding: 3px;">متن</label>
+                <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
             </div>
         </div><br><br>
         <div class="card">

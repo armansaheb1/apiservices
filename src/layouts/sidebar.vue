@@ -1,14 +1,9 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg bg-dark">
-      <a v-if="$store.state.collapse" @click="collapse()"
-        style="cursor:pointer;color:grey ; font-size: 30px ; margin-left: 15px"><font-awesome-icon
-          :icon="['fas', 'angles-left']" /></a>
-      <a v-if="!$store.state.collapse" @click="collapse()"
-        style="cursor:pointer;color:grey ; font-size: 30px ; position:absolute ; left: 10px"
-        class="lefty"><font-awesome-icon :icon="['fas', 'angles-right']" /></a>
-      <a v-if="!$store.state.collapse" class="navbar-brand" href="/"
-        style="font: 25px 'arial'; color:#efefef ; height:70px ; padding:10% ; text-align:right ;float:right; width: 100% ; padding-right: 2%"></a>
+    <nav class="navbar navbar-expand-lg bg-dark" style="height: 65px; padding: 0; background: #4d638c;">
+      <a style="height:65px; padding: 0;margin: 0;width: 100%" class="navbar-brand" href="/"><img style="height:65px; padding: 0;margin: 0; display: flex"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5i9N_LRrYe005Hlnq7216cntna8NmsISSJg&usqp=CAU"
+            alt=""></a>
     </nav>
     <nav class="navbar bg-dark" style="border-top: solid 1px grey ; padding:0">
       <div class="" style="padding:0 ; width:100% ; text-align:left">
