@@ -6,37 +6,11 @@
             </div>
             <div class="card-body">
                 <label style="text-align:right; width: 100%; padding: 3px;">متن</label>
-                <textarea v-model="text" class="form-control" name="" id="" cols="30" rows="5"></textarea>
+                <textarea v-model="text" class="form-control" name="" id="" cols="30" rows="10"></textarea>
                 <br>
-                <button @click="submit()" class="btn btn-dark">اضافه کردن</button>
+                <button @click="submit()" class="btn btn-dark">ویرایش</button>
             </div>
         </div><br><br>
-        <div class="card">
-            <div class="card-header">
-                مدیریت متن ها
-            </div>
-            <div class="card-body">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th style="text-align: center;" class="col-1">#</th>
-                            <th style="text-align: center;" class="col-8">Text</th>
-                            <th style="text-align: center;" class="col-3">Operations</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(item, idx) in texts" v-bind:key="item">
-                            <td style="text-align: center;" class="col-1">{{ idx }}</td>
-                            <td style="text-align: center;" class="col-8">{{ item.text }}</td>
-                            <td style="text-align: center;" class="col-3">
-                                <a class="btn btn-dark from-control" style="margin: 2px" :href="'/texts/' + item.id">Edit</a>
-                                <button class="btn btn-dark from-control" style="margin: 2px" @click="deletes(item.id)">Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
     </div>
 </template>
 <script>
@@ -59,19 +33,23 @@ export default {
     },
     methods: {
         async submit() {
+            const id = this.$route.params.id
             await axios
-                .post('texts', {text : this.text})
+                .put(`texts/${id}`, {text : this.text})
                 .then(response => {
                     this.text = ''
                     this.texts = response.data
+                    const toPath = this.$route.go || '/texts'
+                    this.$router.push(toPath)
                 })
                
         },
         async get_texts() {
+            const id = this.$route.params.id
             await axios
-                .post('texts')
+                .get(`texts/${id}`)
                 .then(response => {
-                    this.texts = response.data
+                    this.text = response.data.text
                 })
                
         },

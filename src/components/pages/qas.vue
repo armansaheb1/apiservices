@@ -5,8 +5,10 @@
                 اضافه کردن متن
             </div>
             <div class="card-body">
-                <label style="text-align:right; width: 100%; padding: 3px;">متن</label>
-                <textarea v-model="text" class="form-control" name="" id="" cols="30" rows="5"></textarea>
+                <label style="text-align:right; width: 100%; padding: 3px;">سوال</label>
+                <input v-model="question" class="form-control">
+                <label style="text-align:right; width: 100%; padding: 3px;">پاسخ</label>
+                <textarea v-model="answer" class="form-control" name="" id="" cols="30" rows="5"></textarea>
                 <br>
                 <button @click="submit()" class="btn btn-dark">اضافه کردن</button>
             </div>
@@ -20,16 +22,18 @@
                     <thead>
                         <tr>
                             <th style="text-align: center;" class="col-1">#</th>
-                            <th style="text-align: center;" class="col-8">Text</th>
+                            <th style="text-align: center;" class="col-4">Question</th>
+                            <th style="text-align: center;" class="col-4">Answer</th>
                             <th style="text-align: center;" class="col-3">Operations</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="(item, idx) in texts" v-bind:key="item">
                             <td style="text-align: center;" class="col-1">{{ idx }}</td>
-                            <td style="text-align: center;" class="col-8">{{ item.text }}</td>
+                            <td style="text-align: center;" class="col-4">{{ item.question }}</td>
+                            <td style="text-align: center;" class="col-4">{{ item.answer }}</td>
                             <td style="text-align: center;" class="col-3">
-                                <a class="btn btn-dark from-control" style="margin: 2px" :href="'/texts/' + item.id">Edit</a>
+                                <a class="btn btn-dark from-control" style="margin: 2px" :href="'/q&a/' + item.id">Edit</a>
                                 <button class="btn btn-dark from-control" style="margin: 2px" @click="deletes(item.id)">Delete</button>
                             </td>
                         </tr>
@@ -51,7 +55,9 @@ export default {
     data: () => ({
         errors: [],
         text: '',
-        texts: []
+        texts: [],
+        question: '',
+        answer: ''
     }),
     mounted() {
         document.title = ' My AI Services| Login '
@@ -60,7 +66,7 @@ export default {
     methods: {
         async submit() {
             await axios
-                .post('texts', {text : this.text})
+                .post('qas', {question : this.question, answer : this.answer})
                 .then(response => {
                     this.text = ''
                     this.texts = response.data
@@ -69,7 +75,7 @@ export default {
         },
         async get_texts() {
             await axios
-                .post('texts')
+                .post('qas')
                 .then(response => {
                     this.texts = response.data
                 })
@@ -77,7 +83,7 @@ export default {
         },
         async deletes(id) {
             await axios
-                .delete(`texts/${id}`)
+                .delete(`qas/${id}`)
                 .then(response => {
                     this.texts = response.data
                 })

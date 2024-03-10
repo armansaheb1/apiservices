@@ -126,7 +126,7 @@ export default {
     phone: ''
   }),
   mounted() {
-    document.title = ' The My Exchange | Login '
+    document.title = ' My AI Services| Login '
   },
   methods: {
     async submitForm() {

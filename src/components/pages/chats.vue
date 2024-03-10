@@ -2,36 +2,26 @@
     <div>
         <div class="card">
             <div class="card-header">
-                اضافه کردن متن
-            </div>
-            <div class="card-body">
-                <label style="text-align:right; width: 100%; padding: 3px;">متن</label>
-                <textarea v-model="text" class="form-control" name="" id="" cols="30" rows="5"></textarea>
-                <br>
-                <button @click="submit()" class="btn btn-dark">اضافه کردن</button>
-            </div>
-        </div><br><br>
-        <div class="card">
-            <div class="card-header">
-                مدیریت متن ها
+             چت ها
             </div>
             <div class="card-body">
                 <table class="table">
                     <thead>
                         <tr>
+                            
+                            <th style="text-align: center;" class="col-9">موضوع</th>
+                            <th style="text-align: center;" class="col-2">یوزر</th>
                             <th style="text-align: center;" class="col-1">#</th>
-                            <th style="text-align: center;" class="col-8">Text</th>
-                            <th style="text-align: center;" class="col-3">Operations</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(item, idx) in texts" v-bind:key="item">
-                            <td style="text-align: center;" class="col-1">{{ idx }}</td>
-                            <td style="text-align: center;" class="col-8">{{ item.text }}</td>
-                            <td style="text-align: center;" class="col-3">
-                                <a class="btn btn-dark from-control" style="margin: 2px" :href="'/texts/' + item.id">Edit</a>
-                                <button class="btn btn-dark from-control" style="margin: 2px" @click="deletes(item.id)">Delete</button>
+                        <tr v-for="(item, idx) in chats" v-bind:key="item">
+                            
+                            <td style="text-align: center;" class="col-9">{{ item.first_message }}</td>
+                            <td style="text-align: center;" class="col-2">
+                                {{ item.user.username }}
                             </td>
+                            <td style="text-align: center;" class="col-1">{{ idx }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -50,8 +40,8 @@ export default {
     },
     data: () => ({
         errors: [],
-        text: '',
-        texts: []
+        chat: '',
+        chats: []
     }),
     mounted() {
         document.title = ' My AI Services| Login '
@@ -69,9 +59,9 @@ export default {
         },
         async get_texts() {
             await axios
-                .post('texts')
+                .get('chats')
                 .then(response => {
-                    this.texts = response.data
+                    this.chats = response.data
                 })
                
         },

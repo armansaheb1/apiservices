@@ -47,7 +47,7 @@ export default {
 }
 
 .card-header{
-  text-align: center!important;
+  text-align: right!important;
   font-family: 'Yekan'!important
 }
 </style>

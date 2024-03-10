@@ -16,7 +16,27 @@ const routes = [
             {
               path:'texts',
               component: () => import('@/components/pages/texts')
-            }
+            },
+            {
+              path:'texts/:id',
+              component: () => import('@/components/pages/text')
+            },
+            {
+              path:'q&a',
+              component: () => import('@/components/pages/qas')
+            },
+            {
+              path:'q&a/:id',
+              component: () => import('@/components/pages/qa')
+          },
+          {
+            path:'chats',
+            component: () => import('@/components/pages/chats')
+          },
+          {
+            path:'settings',
+            component: () => import('@/components/pages/settings')
+          },
             
         ]
   },{

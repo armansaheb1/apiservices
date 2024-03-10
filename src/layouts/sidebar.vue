@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav class="navbar navbar-expand-lg bg-dark" style="height: 65px; padding: 0; background: #4d638c;">
-      <a style="height:65px; padding: 0;margin: 0;width: 100%" class="navbar-brand" href="/"><img style="height:65px; padding: 0;margin: 0; display: flex"
+      <a style="height:65px; padding: 0;margin: 0;width: 100%; background: #4d638c" class="navbar-brand" href="/"><img style="height:65px; padding: 0; display: flex; margin: auto"
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5i9N_LRrYe005Hlnq7216cntna8NmsISSJg&usqp=CAU"
             alt=""></a>
     </nav>
@@ -13,8 +13,8 @@
             متن ها</a></SidenavLink>
         <SidenavLink style="width:100%" icon="receipt" href="/q&a"><a v-if="!$store.state.collapse">
             سوال جواب ها</a></SidenavLink>
-        <SidenavLink style="width:100%" icon="users" href="/users"><a v-if="!$store.state.collapse">
-            کاربران</a></SidenavLink>
+        <SidenavLink style="width:100%" icon="users" href="/chats"><a v-if="!$store.state.collapse">
+            چت ها</a></SidenavLink>
         <SidenavLink style="width:100%" icon="gears" href="/settings"><a v-if="!$store.state.collapse">
             تنظیمات</a></SidenavLink>
         <SidenavLink style="width:100%" icon="sign-out" href="/logout"><a v-if="!$store.state.collapse"> خروج </a>

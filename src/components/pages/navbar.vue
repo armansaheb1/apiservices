@@ -1,12 +1,8 @@
 <template>
   <div>
+    <button type="button" id="train" class="btn btn-dark">ترین</button>
     <nav class="navbar navbar-expand-lg bg-light" style="border-bottom: solid lightgrey 1px; width: 100%">
-      <div class="container-fluid">
         
-        <a @click="train()" class="navbar-brand"  style="width: 100%; text-align: right;"><button id="train" class="btn btn-dark">ترین</button></a>
-        <div style="width: 100%" class="mnot">
-        </div>
-      </div>
     </nav>
     <vue-final-modal style="width:100% ; background:none" v-model="showModal">
       <login />
@@ -29,6 +25,7 @@ export default {
     login
   },
   mounted() {
+    this.get_user()
   },
   data() {
     return {
@@ -37,16 +34,23 @@ export default {
     }
   },
   methods: {
-
+    async get_user() {
+      await axios
+        .get('/user')
+        .then(response => response.data[0])
+        .then(response => {
+          this.name = `${response.username}`
+        })
+    },
     async train() {
-      var btn = document.getElementById('train')
-      btn.disabled = true
-      btn.innerHTML = 'در حال ترین'
+      document.getElementById('train').innerHTML = Training
+      document.getElementById('train').disable = true
       await axios
         .get('/train')
+        .then(response => response.data[0])
         .then(response => {
-          btn.disabled = false
-          btn.innerHTML = 'ترین'
+          document.getElementById('train').innerHTML = Train
+          document.getElementById('train').disable = false
         })
     },
     login() {
